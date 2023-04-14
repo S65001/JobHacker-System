@@ -1,5 +1,31 @@
 package org.example.task_3.chapter_eleven;
 
+/***********************************************************************
+ *                             Triangle                                *
+ *---------------------------------------------------------------------*
+ * -side1: double                                                      *
+ * -side2: double                                                      *
+ * -side3: double                                                      *
+ * -color: String                                                      *
+ * -isFilled: boolean                                                  *
+ * --------------------------------------------------------------------*
+ * +Triangle()                                                         *
+ * +Triangle( side1: double ,  side2: double , side3: double)          *
+ * +getColor(): String                                                 *
+ * +setColor( color: String): void                                     *
+ * +isFilled(): boolean                                                *
+ * +setFilled(): void                                                  *
+ * +getArea(): double                                                  *
+ * +getPerimeter(): double                                             *
+ * +getSide1(): double                                                 *
+ * +setSide1( side1: double): void                                     *
+ * +getSide2(): double                                                 *
+ * +setSide2( side1: double): void                                     *
+ * +getSide3(): double                                                 *
+ * +setSide3( side1: double): void                                     *
+ * +toString(): String                                                 *
+ **********************************************************************/
+
 public class Triangle extends GeometricObject{
     private double side1,side2,side3;
     private String color;
