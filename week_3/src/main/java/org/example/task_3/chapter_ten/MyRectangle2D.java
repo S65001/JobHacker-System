@@ -52,30 +52,31 @@ public class MyRectangle2D {
     }
 
 
-    public boolean contains(double x, double y) {
-        return ( getDistance(this.y, y) <= height / 2 ) && ( getDistance(this.x, x) <= width / 2 );
+    // attributes for the point we want to test are x1,y1
+    public boolean isPointInside(double x1,double y1) {
+        return (x1<=this.x+this.width)
+                &&(x1>=this.x-this.width)
+                &&(y1<=this.y+this.height)
+                &&(y1>=this.y-this.height);
     }
 
     public boolean contains(MyRectangle2D r) {
-        return ( getDistance(y, r.getY()) + r.getHeight() / 2 <= height / 2 )
-                && ( getDistance(x, r.getX()) + r.getWidth() / 2 <= width / 2)
-                && (height / 2 + r.getHeight() / 2 <= height)
-                && (width / 2 + r.getWidth() / 2 <= width);
+        return isPointInside(r.getX()+r.width,r.getY()+r.getHeight())
+                && isPointInside(r.getX()-r.width,r.getY()+r.getHeight())
+                && isPointInside(r.getX()-r.width,r.getY()-r.getHeight())
+                && isPointInside(r.getX()+r.width,r.getY()-r.getHeight());
     }
 
 
-    public boolean overlaps(MyRectangle2D r) {
+    public boolean isOverlaping(MyRectangle2D r) {
         return !contains(r)
-                && ((x + width / 2 > r.getX() - r.getWidth())
-                || (y + height / 2 > r.getY() - r.getHeight()))
-                && (getDistance(y, r.getY()) < height / 2 + r.getHeight() / 2)
-                && (getDistance(x, r.getX()) < width / 2 + r.getWidth() / 2);
+                && (isPointInside(r.getX()+r.width,r.getY()+r.getHeight())
+                || isPointInside(r.getX()-r.width,r.getY()+r.getHeight())
+                || isPointInside(r.getX()-r.width,r.getY()-r.getHeight())
+                || isPointInside(r.getX()+r.width,r.getY()-r.getHeight()));
     }
 
 
-    private double getDistance(double p1, double p2) {
-        return Math.abs(p1-p2);
-    }
 
     public double getX() {
         return x;
