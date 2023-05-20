@@ -1,0 +1,99 @@
+----------------------test adding book--------------------------
+
+1-valid data:
+
+input:new Book( id: 1,author:"ali",book: "hello",version: 6,availability: true)
+output:book added successfully
+
+2- invalid id
+
+input:new Book(-6,"ali","hello",5,false)
+output:invalid data
+
+3- adding exist id
+
+input:new Book(1,"ali","hello",5,false)
+output:this id is already exists
+
+4-invalid author
+ input:new Book(1,null,"hello",5,false)
+ output:invalid data
+
+ 5- invalid book
+ input:new Book(1,"ahmed",null,5,false)
+ output:invalid data
+
+ 6-invalid version
+ input:new Book(1,"ahmed",null,-3,false)
+ output:invalid data
+
+
+--------------------test removing book--------------------------
+
+1-remove existed book
+input:removeBook(1)
+output:book has been deleted successfully
+
+2-remove non-existed book
+
+input:removeBook(2)
+output:this book is not found
+
+--------------------test checkout book--------------------------
+
+1-correct data
+
+input:checkoutBook(bookId:1,userId:1)
+output:book 1 has been checked out
+
+2-non_available book
+input:checkoutBook(2,1)
+output:book is not found
+
+3-invalid user
+input:checkoutBook(1,3)
+output:user not found
+
+------------------test available book---------------------------
+
+1-correct data
+input:availableBooks()
+output:Book{book_id=2, author='mahmoud', title='kera', version=4, isAvailable=true}
+       Book{book_id=3, author='marwan ', title='c++', version=7, isAvailable=true}
+
+
+2-no books in the library
+input:availableBooks()
+output:there is no available books
+
+
+3-no book available
+input:availableBooks()
+output:there is no available books
+
+-------------------------test borrowed book---------------------
+
+1-correct data
+input:borrowedBooks()
+output:Book{book_id=1, author='ali', title='hello', version=6, isAvailable=false}
+       Book{book_id=4, author='adel', title='java', version=9, isAvailable=false}
+
+
+
+2-no books in the library
+input:borrowedBooks()
+output:there is no borrowed books
+
+
+3-no book available
+input:borrowedBooks()
+output:there is no borrowed books
+
+-----------------------test display book------------------------
+1-valid book
+input:displayBook(1)
+output:Book{book_id=2, author='mahmoud', title='kera', version=4, isAvailable=true}
+
+2- book not in the library
+input:displayBook(5);
+output:book is not found
